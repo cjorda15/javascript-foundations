@@ -8,28 +8,20 @@ module.exports = class Centaur{
     this.energy = 3
   }
 
-  shouldUseEnergy(){
-    return !this.standing||this.cranky
-  }
-
   shoot(){
-    this.useEnergy()
-    return this.shouldUseEnergy()? 'NO!': 'Twang!!!'
+    return this.useEnergy()? 'NO!': 'Twang!!!'
   }
 
   run(){
-    this.useEnergy()
-    return this.shouldUseEnergy()? 'NO!': 'Clop clop clop clop!!!'
+    return this.useEnergy()? 'NO!': 'Clop clop clop clop!!!'
   }
 
   sleep(){
-    if(this.standing){
-      return 'NO!'
-    }else{
-      this.cranky= false
-      this.energy = 3
-      return "ZZZZ"
-    }
+    return this.standing?'NO!':(
+      this.cranky= false,
+      this.energy = 3,
+      "ZZZZ"
+    )
   }
 
   layDown(){
@@ -49,6 +41,6 @@ module.exports = class Centaur{
 
   useEnergy(){
     this.energy = this.energy-1
-    this.cranky = this.energy <= 0
+    return (this.cranky = this.energy <= 0 )|| !this.standing
   }
 }
