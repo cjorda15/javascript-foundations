@@ -35,8 +35,11 @@ module.exports = class Centaur{
   }
 
   drinkPotion(){
-    this.cranky = !this.cranky
-    if(!this.standing)  return 'Not while I\'m laying down!'
+    return this.standing?(this.cranky = !this.cranky):'Not while I\'m laying down!'
+
+
+
+
   }
 
   useEnergy(){

@@ -1,7 +1,7 @@
 module.exports =  class Magician{
-  constructor({name,topHat}={}){
-    this.name = name || "Chris"
-    this.topHat = topHat!==undefined?topHat: true
+  constructor(obj){
+    this.name = obj&&obj.name?obj.name : "Chris"
+    this.topHat = obj&&obj.topHat!==undefined?obj.topHat: true
     this.confident = false
     this.spellCount =0
 
